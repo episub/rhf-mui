@@ -29,6 +29,7 @@
     "lint:eslint": "eslint .",
     "lint:fix": "yarn lint --fix",
     "lint:tsc": "tsc --noEmit",
+    "prepack": "yarn build",
     "release": "semantic-release",
     "test": "yarn lint"
   },
