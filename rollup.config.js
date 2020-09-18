@@ -8,12 +8,10 @@ const rollupConifg = {
     {
       file: pkg.browser,
       format: 'cjs',
-      sourcemap: true,
     },
     {
       file: pkg.module,
       format: 'es',
-      sourcemap: true,
     },
   ],
   plugins: [external(), ts()],

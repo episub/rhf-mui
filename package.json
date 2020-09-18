@@ -24,7 +24,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rimraf dist && rollup -c",
     "format": "prettier --write .",
     "lint": "yarn lint:tsc && yarn lint:eslint",
     "lint:eslint": "eslint .",
@@ -72,6 +72,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hook-form": "^6.8.2",
+    "rimraf": "^3.0.2",
     "rollup": "^2.27.0",
     "rollup-plugin-auto-external": "^2.0.0",
     "semantic-release": "^17.1.2",
