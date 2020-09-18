@@ -1,9 +1,13 @@
+*.log
+.DS_Store
+node_modules
+.cache
+dist
+
+# yarn 2
 .yarn/*
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-
-**/node_modules
-build

@@ -1,20 +1,14 @@
 {
+  "include": ["src", "types"],
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noEmit": true,
-    "experimentalDecorators": true,
-    "baseUrl": "./",
+    "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "noErrorTruncation": false,
-    "allowJs": true,
-    // Otherwise we get react-native typings which conflict with dom.lib.
-    "types": ["react"]
-  },
-  "exclude": ["**/build", "**/node_modules"]
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "outDir": "dist"
+  }
 }
