@@ -17,8 +17,9 @@
   },
   "license": "MIT",
   "author": "myrovh <myrovh@protonmail.com>",
-  "main": "dist/index.js",
   "module": "dist/index.es.js",
+  "browser": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -49,7 +50,6 @@
     "@semantic-release/git": "^9.0.0",
     "@types/autosuggest-highlight": "^3.1.0",
     "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
     "@types/react-window": "^1.8.2",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
@@ -87,5 +87,8 @@
   },
   "engines": {
     "node": ">=10"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

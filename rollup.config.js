@@ -6,7 +6,7 @@ const rollupConifg = {
   input: 'src/index.ts',
   output: [
     {
-      file: pkg.main,
+      file: pkg.browser,
       format: 'cjs',
       sourcemap: true,
     },
