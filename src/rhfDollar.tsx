@@ -2,7 +2,7 @@ import { InputAdornment, TextField } from '@material-ui/core'
 import { CurrencyUsd } from 'mdi-material-ui'
 import React from 'react'
 import { Controller } from 'react-hook-form'
-import type { RHFFieldProps} from './shared';
+import type { RHFFieldProps } from './shared'
 import { useRHFGetFields } from './shared'
 
 /**
@@ -15,7 +15,7 @@ export const RHFDollar = ({
   label,
   disabled,
   textFieldProps,
-}: RHFFieldProps) => {
+}: RHFFieldProps): JSX.Element => {
   const {
     control,
     textFieldProps: mergedTextProps,

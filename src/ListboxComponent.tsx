@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment */
 import {
   ListSubheader,
-  makeStyles,
   Typography,
   useMediaQuery,
   useTheme,
@@ -8,22 +8,19 @@ import {
 import type { AutocompleteRenderGroupParams } from '@material-ui/lab'
 import match from 'autosuggest-highlight/match'
 import parse from 'autosuggest-highlight/parse'
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 import React from 'react'
-import type { ListChildComponentProps} from 'react-window';
+import type { ListChildComponentProps } from 'react-window'
 import { VariableSizeList } from 'react-window'
 
 const LISTBOX_PADDING = 8 // px
-
-export const useListboxStyles = makeStyles({
-  listbox: {
-    boxSizing: 'border-box',
-    '& ul': {
-      padding: 0,
-      margin: 0,
-    },
-  },
-})
+const LISTBOX_ROW_COUNT = 8 // rows
+const ITEM_HEIGHT_STARTING_VALUE = 0
+const FONT_WEIGHT_BOLD = 700
+const FONT_WEIGHT_REGULAR = 400
+const ITEM_HEIGHT_SM_UP = 36
+const ITEM_HEIGHT_XS = 48
+const FINAL_PADDING_MULTIPLYER = 2
 
 function renderRow(props: ListChildComponentProps) {
   const { data, index, style } = props
@@ -37,16 +34,17 @@ function renderRow(props: ListChildComponentProps) {
 
 const OuterElementContext = React.createContext({})
 
+// eslint-disable-next-line react/display-name
 const OuterElementType = React.forwardRef<HTMLDivElement>((props, ref) => {
   const outerProps = React.useContext(OuterElementContext)
   return <div ref={ref} {...props} {...outerProps} />
 })
 
-function useResetCache(data: any) {
+function useResetCache(data: unknown) {
   const ref = React.useRef<VariableSizeList>(null)
   React.useEffect(() => {
-    if (ref.current !== undefined && ref.current !== null) {
-      ref.current.resetAfterIndex(0, true)
+    if (ref.current !== null) {
+      ref.current.resetAfterIndex(ITEM_HEIGHT_STARTING_VALUE, true)
     }
   }, [data])
   return ref
@@ -55,27 +53,33 @@ function useResetCache(data: any) {
 // Adapter for react-window
 export const ListboxComponent = React.forwardRef<HTMLDivElement>(
   function ListboxComponent(props, ref) {
+    // eslint-disable-next-line react/prop-types
     const { children, ...other } = props
     const itemData = React.Children.toArray(children)
     const theme = useTheme()
     const smUp = useMediaQuery(theme.breakpoints.up('sm'), { noSsr: true })
     const itemCount = itemData.length
-    const itemSize = smUp ? 36 : 48
+    const itemSize = smUp ? ITEM_HEIGHT_SM_UP : ITEM_HEIGHT_XS
 
     const getChildSize = (child: React.ReactNode) => {
       if (React.isValidElement(child) && child.type === ListSubheader) {
-        return 48
+        return ITEM_HEIGHT_SM_UP
       }
 
       return itemSize
     }
 
     const getHeight = () => {
-      if (itemCount > 8) {
-        return 8 * itemSize
+      if (itemCount > LISTBOX_ROW_COUNT) {
+        return LISTBOX_ROW_COUNT * itemSize
       }
       // eslint-disable-next-line unicorn/no-fn-reference-in-iterator,unicorn/no-reduce
-      return itemData.map(getChildSize).reduce((a, b) => a + b, 0)
+      return (
+        itemData
+          .map((item) => getChildSize(item))
+          // eslint-disable-next-line unicorn/no-reduce
+          .reduce((a, b) => a + b, ITEM_HEIGHT_STARTING_VALUE)
+      )
     }
 
     const gridRef = useResetCache(itemCount)
@@ -85,7 +89,7 @@ export const ListboxComponent = React.forwardRef<HTMLDivElement>(
         <OuterElementContext.Provider value={other}>
           <VariableSizeList
             itemData={itemData}
-            height={getHeight() + 2 * LISTBOX_PADDING}
+            height={getHeight() + FINAL_PADDING_MULTIPLYER * LISTBOX_PADDING}
             width="100%"
             ref={gridRef}
             outerElementType={OuterElementType}
@@ -102,7 +106,9 @@ export const ListboxComponent = React.forwardRef<HTMLDivElement>(
   },
 )
 
-export const RenderGroup = (params: AutocompleteRenderGroupParams) => [
+export const RenderGroup = (
+  params: AutocompleteRenderGroupParams,
+): ReactNode[] => [
   <ListSubheader key={params.key} component="div">
     {params.group}
   </ListSubheader>,
@@ -123,7 +129,7 @@ export const RenderListOption = (
           // eslint-disable-next-line react/no-array-index-key
           key={index}
           style={{
-            fontWeight: part.highlight ? 700 : 400,
+            fontWeight: part.highlight ? FONT_WEIGHT_BOLD : FONT_WEIGHT_REGULAR,
           }}
         >
           {part.text}

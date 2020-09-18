@@ -1,27 +1,22 @@
 import { KeyboardDatePicker } from '@material-ui/pickers'
+import type { ParsableDate } from '@material-ui/pickers/constants/prop-types'
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import type { RHFFieldProps } from './shared'
 import { useRHFGetFields } from './shared'
 
-interface KeyboardDateProps extends RHFFieldProps {
+interface RHFKeyboardDateProps extends RHFFieldProps {
   clearable?: boolean
   displayDateFormat?: string
 }
 
-export const RHFKeyboardDate = (props: KeyboardDateProps): JSX.Element => {
+export const RHFKeyboardDate = (props: RHFKeyboardDateProps): JSX.Element => {
   const { isError, fieldError, control, textFieldProps } = useRHFGetFields({
     name: props.name,
     textFieldProps: props.textFieldProps,
   })
 
-  const {
-    variant,
-    onChange: _fieldChange,
-    onBlur: _fieldBlur,
-    onError: _onError,
-    ...otherTextProps
-  } = textFieldProps
+  const { variant, ...otherTextProps } = textFieldProps
 
   return (
     <Controller
@@ -29,7 +24,7 @@ export const RHFKeyboardDate = (props: KeyboardDateProps): JSX.Element => {
         <KeyboardDatePicker
           {...otherTextProps}
           onChange={onChange}
-          value={value}
+          value={value as ParsableDate}
           onBlur={onBlur}
           disabled={props.disabled}
           error={isError}

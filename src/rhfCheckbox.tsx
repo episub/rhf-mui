@@ -8,7 +8,7 @@ import {
 import React from 'react'
 import { Controller } from 'react-hook-form'
 import type { O } from 'ts-toolbelt'
-import type { RHFFieldProps} from './shared';
+import type { RHFFieldProps } from './shared'
 import { useRHFGetFields } from './shared'
 
 /**
@@ -18,7 +18,7 @@ export const RHFCheckbox = ({
   name,
   label,
   disabled,
-}: O.Omit<RHFFieldProps, 'textFieldProps'>) => {
+}: O.Omit<RHFFieldProps, 'textFieldProps'>): JSX.Element => {
   const { control, isError, fieldError } = useRHFGetFields({ name })
 
   return (
@@ -35,7 +35,7 @@ export const RHFCheckbox = ({
                   disabled={disabled}
                   onBlur={onBlur}
                   onChange={(e) => onChange(e.target.checked)}
-                  checked={value}
+                  checked={value as boolean}
                   name={renderName}
                 />
               )}

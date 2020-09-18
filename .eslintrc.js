@@ -24,7 +24,6 @@ module.exports = {
           'warn',
           { ignoreRestSiblings: true },
         ],
-        'import/no-relative-parent-imports': 'off',
         'unicorn/filename-case': [
           'error',
           {

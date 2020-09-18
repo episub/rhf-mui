@@ -5,8 +5,8 @@ import type { RHFFieldProps } from './shared'
 import { useRHFGetFields } from './shared'
 
 export const RHFTextField = ({
-  textFieldProps,
   name,
+  textFieldProps,
   ...otherProps
 }: RHFFieldProps): JSX.Element => {
   const {
