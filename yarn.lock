@@ -1408,6 +1408,7 @@ __metadata:
     "@material-ui/pickers": ^3.2.0
     mdi-material-ui: ^6.18.0
     react: ">=16"
+    react-dom: ">=16"
     react-hook-form: ^6.8.0
   languageName: unknown
   linkType: soft
