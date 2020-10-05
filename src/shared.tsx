@@ -9,16 +9,6 @@ import { get, useFormContext } from 'react-hook-form'
 import type { O } from 'ts-toolbelt'
 import { ListboxComponent, RenderListOption } from './ListboxComponent'
 
-const useListboxStyles = makeStyles({
-  listbox: {
-    boxSizing: 'border-box',
-    '& ul': {
-      padding: 0,
-      margin: 0,
-    },
-  },
-})
-
 interface Props<T> {
   loading: boolean
   disabled?: boolean
@@ -47,6 +37,16 @@ interface RHFFieldMeta {
   textFieldProps: TextFieldCutDown
 }
 
+export const useListboxStyles = makeStyles({
+  listbox: {
+    boxSizing: 'border-box',
+    '& ul': {
+      padding: 0,
+      margin: 0,
+    },
+  },
+})
+
 /**
  * A helper function to quickly get all the values rhf values needed to
  * implement an input in material-ui. Given a field name and text props it will
@@ -57,6 +57,7 @@ export const useRHFGetFields = ({
   name,
   textFieldProps,
 }: Pick<RHFFieldProps, 'name' | 'textFieldProps'>): RHFFieldMeta => {
+  // eslint-disable-next-line @typescript-eslint/unbound-method
   const { control, errors } = useFormContext()
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
