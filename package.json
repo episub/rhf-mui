@@ -1,6 +1,6 @@
 {
   "name": "@episub/rhf-mui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Glue components to help intergrating react-hook-forms with mui",
   "keywords": [
     "react",
