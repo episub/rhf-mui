@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/episub/rhf-mui/compare/v1.0.1...v1.1.0) (2020-10-05)
+
+
+### Features
+
+* export additional autocomplete components ([199362d](https://github.com/episub/rhf-mui/commit/199362d36f4d9fd2e7d948fafed2f8cb56d7b1e9))
+
 ## [1.0.1](https://github.com/episub/rhf-mui/compare/v1.0.0...v1.0.1) (2020-09-25)
 
 
