@@ -12,8 +12,8 @@ import { ListboxComponent, RenderListOption } from './ListboxComponent'
 interface Props<T> {
   loading: boolean
   disabled?: boolean
-  textProps?: O.Omit<TextFieldProps, 'disabled'>
-  autoCompleteProps: O.Omit<
+  textProps?: Omit<TextFieldProps, 'disabled'>
+  autoCompleteProps: Omit<
     O.Required<AutocompleteProps<T, false, false, false>, 'getOptionLabel'>,
     | 'classes'
     | 'disableListWrap'

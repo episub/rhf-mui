@@ -37,8 +37,7 @@
   "dependencies": {
     "autosuggest-highlight": "^3.1.1",
     "prop-types": "^15.7.2",
-    "react-window": "^1.8.5",
-    "ts-toolbelt": "^8.0.5"
+    "react-window": "^1.8.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -86,6 +85,9 @@
     "react": ">=16",
     "react-dom": ">=16",
     "react-hook-form": "^6.8.0"
+  },
+  "optionalDependencies": {
+    "ts-toolbelt": "8.0.7"
   },
   "engines": {
     "node": ">=10"
