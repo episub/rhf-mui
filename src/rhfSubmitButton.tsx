@@ -18,7 +18,7 @@ interface ExtraProps {
   buttonText?: string
 }
 
-type Props = O.Merge<ExtraProps, O.Omit<ButtonProps, 'children'>>
+type Props = O.Merge<ExtraProps, Omit<ButtonProps, 'children'>>
 
 export const RHFSubmitButton = ({
   disabled,
