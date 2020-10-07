@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/episub/rhf-mui/compare/v1.1.0...v1.1.1) (2020-10-07)
+
+
+### Bug Fixes
+
+* pin ts-toolbelt version ([d48eb33](https://github.com/episub/rhf-mui/commit/d48eb33271afbc5d169ecfcf89005c338ad36671))
+
 # [1.1.0](https://github.com/episub/rhf-mui/compare/v1.0.1...v1.1.0) (2020-10-05)
 
 
